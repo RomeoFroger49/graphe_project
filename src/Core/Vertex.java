@@ -25,6 +25,14 @@ public class Vertex {
         return edges;
     }
 
+    public void setVisited() {
+        this.visited = true;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
     // utils for non-oriented graphs
     public int getDegree() {
         return edges.length;

@@ -87,13 +87,6 @@ public class Graph {
         return null;
     }
 
-    public boolean isAllVisited() {
-        for (Vertex v : vertices) {
-            if (!v.isVisited()) return false;
-        }
-        return true;
-    }
-
     public void affichage() {
         for (Vertex v : this.getVertices()) {
             System.out.println("\nEdges for vertex " + v.getLabel() + ":");

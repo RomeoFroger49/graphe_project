@@ -46,6 +46,6 @@ public class Edge {
 
     // utils oriented graphs
     public boolean isConsecutive(Edge e) {
-        return this.end == e.start;
+        return this.end == e.start || this.start == e.end;
     }
 }

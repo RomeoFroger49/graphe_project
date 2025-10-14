@@ -18,4 +18,34 @@ public class Edge {
         this.weight = weight;
         this.label = label;
     }
+
+
+    public int getId() {
+        return id;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public Vertex getStart() {
+        return start;
+    }
+
+    public Vertex getEnd() {
+        return end;
+    }
+
+    public boolean isDirected() {
+        return directed;
+    }
+
+    public int getWeight() {
+        return weight;
+    }
+
+    // utils oriented graphs
+    public boolean isConsecutive(Edge e) {
+        return this.end == e.start;
+    }
 }

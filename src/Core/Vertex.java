@@ -8,7 +8,7 @@ public class Vertex {
 
     static int idCounter = 0;
 
-    public Vertex(int id, String label) {
+    public Vertex(String label) {
         this.id = idCounter++;
         this.label = label;
     }

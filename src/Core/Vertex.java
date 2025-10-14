@@ -6,7 +6,6 @@ public class Vertex {
     int id;
     String label;
     ArrayList<Edge> edges;
-    boolean visited;
 
     static int idCounter = 0;
 
@@ -25,14 +24,6 @@ public class Vertex {
 
     public ArrayList<Edge> getEdges() {
         return edges;
-    }
-
-    public void setVisited() {
-        this.visited = true;
-    }
-
-    public boolean isVisited() {
-        return visited;
     }
 
     // utils for non-oriented graphs

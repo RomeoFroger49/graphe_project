@@ -1,39 +1,75 @@
 package Core;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class Graph {
-    Vertex[] vertices;
-    Edge[] edges;
+    ArrayList<Vertex> vertices;
+    ArrayList<Edge> edges;
     String label;
 
     public Graph(Vertex[] vertices, Edge[] edges, String label) {
-        this.vertices = vertices;
-        this.edges = edges;
+        this.vertices = new ArrayList<>();
+        Collections.addAll(this.vertices, vertices);
+        this.edges = new ArrayList<>();
+        Collections.addAll(this.edges, edges);
         this.label = label;
 
         // set edges for each vertex
+        setEdgesForVertices();
+    }
+
+    // constructeur à partir d'une matrice d'adjacence
+    public Graph(int[][] matrice, String label) {
+
+        this.label = label;
+        vertices = new ArrayList<>();
+        edges = new ArrayList<>();
+
+
+        for (int i = 0; i < matrice.length; i++) {
+            vertices.add(new Vertex(String.valueOf(i)));
+
+        }
+        ArrayList<Edge> edgesList = new ArrayList<>();
+        for (int i = 0; i < matrice.length; i++) {
+            for (int j = 0; j < matrice[i].length; j++) {
+                if (matrice[i][j] != 0) {
+                    Edge e = new Edge(vertices.get(i), vertices.get(j), false, matrice[i][j]);
+                    edgesList.add(e);
+                }
+            }
+        }
+        edges = edgesList;
+        // set edges for each vertex
+        setEdgesForVertices();
+    }
+
+    // utils - affecte à chaque sommet la liste de ses arêtes
+    public void setEdgesForVertices() {
         for (Vertex v : vertices) {
-            int cnt = 0;
-            for (Edge e : edges) {
-                if (e.start == v || (!e.directed && e.end == v) || (e.directed && e.end == v)) {
-                    cnt++;
-                }
+            v.edges = new ArrayList<>();
+        }
+
+        for (Edge e : edges) {
+            // Pour le sommet de départ
+            e.start.edges.add(e);
+
+            // Pour le sommet d’arrivée, si l’arête est non orientée
+            if (!e.directed && e.end != e.start) {
+                e.end.edges.add(e);
             }
-            Edge[] vEdges = new Edge[cnt];
-            cnt = 0;
-            for (Edge e : edges) {
-                if (e.start == v || (!e.directed && e.end == v) || (e.directed && e.end == v)) {
-                    vEdges[cnt++] = e;
-                }
-            }
-            v.edges = vEdges;
+
+            // Si l’arête est orientée, on peut aussi ajouter e.end.edges.add(e)
+            // si on veut que le sommet d’arrivée connaisse aussi ses arêtes entrantes
         }
     }
 
-    public Vertex[] getVertices() {
+    public ArrayList<Vertex> getVertices() {
         return vertices;
     }
 
-    public Edge[] getEdges() {
+    public ArrayList<Edge> getEdges() {
         return edges;
     }
 
@@ -55,10 +91,19 @@ public class Graph {
         return null;
     }
 
-    public boolean allVisited() {
+    public boolean isAllVisited() {
         for (Vertex v : vertices) {
             if (!v.isVisited()) return false;
         }
         return true;
+    }
+
+    public void affichage() {
+        for (Vertex v : this.getVertices()) {
+            System.out.println("\nEdges for vertex " + v.getLabel() + ":");
+            for (Edge e : v.getEdges()) {
+                System.out.println(e);
+            }
+        }
     }
 }

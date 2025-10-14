@@ -42,4 +42,10 @@ public class Edge {
     public boolean isConsecutive(Edge e) {
         return this.end == e.start || this.start == e.end;
     }
+
+    // debogage visuel
+    @Override
+    public String toString() {
+        return start.getLabel() + " " + (directed ? "-> " : "-- ") + end.getLabel() + " (weight: " + weight + ")";
+    }
 }

@@ -1,5 +1,6 @@
 import Core.Graph;
 import Core.Vertex;
+import Data.City;
 
 import java.util.List;
 
@@ -22,17 +23,16 @@ public class Main {
         };
 
 
-        String[] listeVille = {"Paris", "Caen", "Lille", "Dijon", "Nancy", "Lyon", "Grenoble", "Rennes", "Bordeaux", "Nantes"};
 
-        Graph graph = new Graph(matrice, listeVille, "test");
+        Graph graph = new Graph(matrice, City.listLabels(), "test");
 
-        List<Vertex> result = Algorithm.BFS.bfsDirected(graph, graph.getVertexByName("Rennes"));
+        List<Vertex> result = Algorithm.BFS.bfsDirected(graph, graph.getVertexByName(City.RENNES.label()));
 
         for (Vertex v : result) {
             System.out.print(v.getLabel() + " ");
         }
 
-        graph.affichage();
+
 
 
 

@@ -4,6 +4,7 @@ public class Vertex {
     int id;
     String label;
     Edge[] edges;
+    boolean visited;
 
     static int idCounter = 0;
 

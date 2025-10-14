@@ -20,7 +20,7 @@ public class Graph {
     }
 
     // constructeur à partir d'une matrice d'adjacence
-    public Graph(int[][] matrice, String label) {
+    public Graph(int[][] matrice, String[] nameVertices, String label) {
 
         this.label = label;
         this.vertices = new ArrayList<>();
@@ -28,7 +28,7 @@ public class Graph {
 
         int n = matrice.length;
         for (int i = 0; i < n; i++) {
-            vertices.add(new Vertex(String.valueOf(i)));
+            vertices.add(new Vertex(nameVertices[i]));
         }
 
         for (int i = 0; i < matrice.length; i++) {
@@ -81,6 +81,15 @@ public class Graph {
     public Vertex getVertex(Vertex v) {
         for (Vertex vertex : vertices) {
             if (vertex == v) {
+                return vertex;
+            }
+        }
+        return null;
+    }
+
+    public Vertex getVertexByName(String s) {
+        for (Vertex vertex : vertices) {
+            if (vertex.getLabel().equals(s)) {
                 return vertex;
             }
         }

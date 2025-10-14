@@ -29,8 +29,8 @@ public class Vertex {
         this.visited = true;
     }
 
-    public boolean isVisited() {
-        return visited;
+    public void isVisited() {
+         visited = true;
     }
 
     // utils for non-oriented graphs

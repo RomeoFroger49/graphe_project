@@ -1,9 +1,11 @@
 package Core;
 
+import java.util.ArrayList;
+
 public class Vertex {
     int id;
     String label;
-    Edge[] edges;
+    ArrayList<Edge> edges;
     boolean visited;
 
     static int idCounter = 0;
@@ -21,7 +23,7 @@ public class Vertex {
         return id;
     }
 
-    public Edge[] getEdges() {
+    public ArrayList<Edge> getEdges() {
         return edges;
     }
 
@@ -35,7 +37,7 @@ public class Vertex {
 
     // utils for non-oriented graphs
     public int getDegree() {
-        return edges.length;
+        return edges.size();
     }
 
     // utils for oriented graphs

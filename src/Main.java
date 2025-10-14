@@ -1,15 +1,42 @@
+import Core.Graph;
+import Core.Vertex;
+
+import java.util.List;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        int[][] matrice = {
+                /*Paris*/   {0, 50, 70, 60, 0, 0, 0, 110, 150, 80},
+                /*Caen*/    {50, 0, 65, 0, 0, 0, 0, 75, 0, 0},
+                /*Lille*/   {70, 65, 0, 120, 100, 0, 0, 0, 0, 0},
+                /*Dijon*/   {60, 0, 120, 0, 75, 70, 75, 0, 0, 0},
+                /*Nancy*/   {0, 0, 100, 75, 0, 90, 80, 0, 0, 0},
+                /*Lyon*/    {0, 0, 0, 70, 90, 0, 40, 0, 100, 0},
+                /*Grenoble*/{0, 0, 0, 75, 80, 40, 0, 0, 0, 0},
+                /*Rennes*/  {110, 75, 0, 0, 0, 0, 0, 0, 130, 45},
+                /*Bordeaux*/{150, 0, 0, 0, 0, 100, 0, 130, 0, 90},
+                /*Nantes*/  {80, 0, 0, 0, 0, 0, 0, 45, 90, 0},
+        };
+
+
+        String[] listeVille = {"Paris", "Caen", "Lille", "Dijon", "Nancy", "Lyon", "Grenoble", "Rennes", "Bordeaux", "Nantes"};
+
+        Graph graph = new Graph(matrice, listeVille, "test");
+
+        List<Vertex> result = Algorithm.BFS.bfsDirected(graph, graph.getVertexByName("Rennes"));
+
+        for (Vertex v : result) {
+            System.out.print(v.getLabel() + " ");
         }
+
+        graph.affichage();
+
+
+
+
+
     }
 }

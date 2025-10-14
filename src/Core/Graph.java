@@ -23,25 +23,21 @@ public class Graph {
     public Graph(int[][] matrice, String label) {
 
         this.label = label;
-        vertices = new ArrayList<>();
-        edges = new ArrayList<>();
+        this.vertices = new ArrayList<>();
+        this.edges = new ArrayList<>();
 
-
-        for (int i = 0; i < matrice.length; i++) {
+        int n = matrice.length;
+        for (int i = 0; i < n; i++) {
             vertices.add(new Vertex(String.valueOf(i)));
-
         }
-        ArrayList<Edge> edgesList = new ArrayList<>();
+
         for (int i = 0; i < matrice.length; i++) {
             for (int j = 0; j < matrice[i].length; j++) {
                 if (matrice[i][j] != 0) {
-                    Edge e = new Edge(vertices.get(i), vertices.get(j), false, matrice[i][j]);
-                    edgesList.add(e);
+                    edges.add(new Edge(vertices.get(i), vertices.get(j), true, matrice[i][j]));
                 }
             }
         }
-        edges = edgesList;
-        // set edges for each vertex
         setEdgesForVertices();
     }
 

@@ -1,4 +1,4 @@
-package Core;
+package core;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,6 +8,7 @@ public class Graph {
     ArrayList<Edge> edges;
     String label;
 
+    // Constructeur classique
     public Graph(Vertex[] vertices, Edge[] edges, String label) {
         this.vertices = new ArrayList<>();
         Collections.addAll(this.vertices, vertices);

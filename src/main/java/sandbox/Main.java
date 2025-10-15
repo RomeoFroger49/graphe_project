@@ -1,6 +1,8 @@
-import Core.Graph;
-import Core.Vertex;
-import Data.City;
+package sandbox;
+
+import core.Graph;
+import core.Vertex;
+import core.City;
 
 import java.util.List;
 
@@ -26,7 +28,7 @@ public class Main {
 
         Graph graph = new Graph(matrice, City.listLabels(), "test");
 
-        List<Vertex> result = Algorithm.BFS.bfsDirected(graph, graph.getVertexByName(City.RENNES.label()));
+        List<Vertex> result = algo.BFS.bfsDirected(graph, graph.getVertexByName(City.RENNES.label()));
 
         for (Vertex v : result) {
             System.out.print(v.getLabel() + " ");

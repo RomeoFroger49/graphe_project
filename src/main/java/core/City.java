@@ -1,4 +1,4 @@
-package Data;
+package core;
 
 import java.util.Arrays;
 

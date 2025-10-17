@@ -1,6 +1,7 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Vertex {
     int id;
@@ -48,5 +49,13 @@ public class Vertex {
         return cnt;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // Check for reference equality
+        if (o == null || getClass() != o.getClass()) return false; // Check for null and class type
+
+        Vertex e = (Vertex) o;
+        return Objects.equals(e.id, id);
+    }
 
 }

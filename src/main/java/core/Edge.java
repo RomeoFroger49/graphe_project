@@ -1,5 +1,7 @@
 package core;
 
+import java.util.Objects;
+
 public class Edge {
     int id;
     Vertex start;
@@ -47,5 +49,14 @@ public class Edge {
     @Override
     public String toString() {
         return start.getLabel() + " " + (directed ? "-> " : "-- ") + end.getLabel() + " (weight: " + weight + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // Check for reference equality
+        if (o == null || getClass() != o.getClass()) return false; // Check for null and class type
+
+        Edge e = (Edge) o;
+        return (Objects.equals(e.end, end) && Objects.equals(e.start, start)) || (Objects.equals(e.start, end) && Objects.equals(e.end, start));
     }
 }

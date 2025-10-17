@@ -62,6 +62,10 @@ public class Graph {
         }
     }
 
+    public String getLabel() {
+        return label;
+    }
+
     public ArrayList<Vertex> getVertices() {
         return vertices;
     }

@@ -1,5 +1,6 @@
 package main.sandbox;
 
+import main.algo.BellmanFord;
 import main.core.Graph;
 import main.core.Vertex;
 import main.core.City;
@@ -38,5 +39,22 @@ public class Main {
         List<Vertex> dfs = DFS.dfs(graph.getVertexByName(City.RENNES.label()));
         dfs.forEach(v -> System.out.print(v.getLabel() + " "));
         System.out.println();
+
+        System.out.println("\n=== Bellman-Ford depuis Rennes ===");
+        Vertex start = graph.getVertexByName(City.RENNES.label());
+        try {
+            BellmanFord.Result res = BellmanFord.run(graph, start);
+            res.print(start);
+
+            // Exemple : afficher le chemin Rennes -> Bordeaux
+            Vertex dest = graph.getVertexByName(City.BORDEAUX.label());
+            List<Vertex> path = res.getPathTo(dest);
+            System.out.println("\nChemin Rennes -> Bordeaux : ");
+            path.forEach(v -> System.out.print(v.getLabel() + " "));
+            System.out.println();
+
+        } catch (IllegalStateException e) {
+            System.out.println("Erreur : " + e.getMessage());
+        }
     }
 }

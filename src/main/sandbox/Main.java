@@ -1,13 +1,16 @@
-package sandbox;
+package main.sandbox;
 
-import core.Graph;
-import core.Vertex;
-import core.City;
+import main.core.Graph;
+import main.core.Vertex;
+import main.core.City;
+import main.algo.BFS;
 
 import java.util.List;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import main.algo.DFS;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -24,21 +27,16 @@ public class Main {
                 /*Nantes*/  {80, 0, 0, 0, 0, 0, 0, 45, 90, 0},
         };
 
-
-
         Graph graph = new Graph(matrice, City.listLabels(), "test");
 
-        List<Vertex> result = algo.BFS.bfsDirected(graph, graph.getVertexByName(City.RENNES.label()));
+        System.out.println("=== BFS depuis Rennes ===");
+        List<Vertex> bfs = BFS.bfsDirected(graph, graph.getVertexByName(City.RENNES.label()));
+        bfs.forEach(v -> System.out.print(v.getLabel() + " "));
+        System.out.println();
 
-        for (Vertex v : result) {
-            System.out.print(v.getLabel() + " ");
-        }
-
-
-
-
-
-
-
+        System.out.println("\n=== DFS depuis Rennes ===");
+        List<Vertex> dfs = DFS.dfs(graph.getVertexByName(City.RENNES.label()));
+        dfs.forEach(v -> System.out.print(v.getLabel() + " "));
+        System.out.println();
     }
 }

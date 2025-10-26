@@ -1,8 +1,8 @@
-package algo;
+package main.algo;
 
-import core.Edge;
-import core.Graph;
-import core.Vertex;
+import main.core.Edge;
+import main.core.Graph;
+import main.core.Vertex;
 
 import java.util.*;
 
